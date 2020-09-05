@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\OpenOrderFramework",
+    "\\OpenOrderFramework\\Controllers",
+    "\\OpenOrderFramework\\Models",
+    "\\OpenOrderFramework\\Views",
+    "\\OpenOrderFramework\\Views\\Checkout",
+    "\\OpenOrderFramework\\Views\\Feedback"
+  ],
+  "SelectedNode": "\\OpenOrderFramework\\Controllers\\FeedbackController.cs",
+  "PreviewInSolutionExplorer": false
+}

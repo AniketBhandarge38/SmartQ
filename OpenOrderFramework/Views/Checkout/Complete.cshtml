@@ -1,0 +1,145 @@
+﻿@model OpenOrderFramework.Models.Token
+@{ ViewBag.Title = "Checkout Complete"; }
+<h2>Checkout Complete</h2>
+<p>Thanks for your order! Your order number is: @Model</p>
+<p>
+    How about shopping for some more stuff in our
+    @Html.ActionLink("store", "Index", "Home")
+</p>
+
+@*<p>
+    Give Feedback
+    @Html.ActionLink("Feedback", "Create", "Feedback")
+</p>
+<br />*@
+
+@for (var datec = DateTime.Now.Date; datec < DateTime.Now.Date.AddDays(3); datec = datec.AddDays(1))
+{
+<h4>@datec.DayOfWeek</h4>
+
+                <label for="Tokens">Choose a slot:</label> for (int count = 10; count <= 17; count = count + 1)
+                {
+                    //int defcon = Model.TokenID - 1;
+
+
+                    if (datec == DateTime.Now.Date)
+                    {
+                        if (DateTime.Now.Hour < count)
+                        {
+                            var temp = count + 1;
+<select name="Tokens" id="Tokens">
+    <option value="volvo">@count:00 - @temp:00</option>
+</select> }
+}
+else
+{
+var temp = count + 1;
+<select name="Tokens" id="Tokens">
+    <option value="volvo">@count:00 - @temp:00</option>
+</select> } @*foreach (var group in Model.TokenID)
+            {
+                int cnt = 0;
+                foreach (var item in group)
+                {
+                    if (cnt == 0)
+                    {
+
+                        if (item.TokenID == count)
+                        {
+                            flag = 1;
+                            if (group.Count() < 5)
+                            {
+                                if (DateTime.Now.Hour < item.TokenID || datec != DateTime.Now.Date)
+                                {
+                                    <h2>@item.TokenSlot</h2>
+                                }
+
+                            }
+
+                        }
+                        if (iter == defcon && flag == 0)
+                        {
+                            if (DateTime.Now.Hour < count || datec != DateTime.Now.Date)
+                            {
+                                var temp1 = count + 1;
+                                <h2>@count:00 - @temp1:00</h2>
+                            }
+                        }
+
+
+                        cnt++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                iter++;
+            }
+        }
+    }*@}
+}
+<br>
+<br />
+
+
+
+<br />
+<br />
+
+@*@using (Html.BeginForm("TokenStatus", "Checkout", FormMethod.Post))
+{
+@Html.AntiForgeryToken()
+
+               
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TokenSlot, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.TokenSlot, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-offset-2 col-md-10">
+                                                        <input type="submit" class="btn btn-default" value="Create Token" />
+                                                    </div>
+                                                </div>}*@
+
+
+
+
+@using (Html.BeginForm("TokenStatus", "Checkout", FormMethod.Post))
+{
+@Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    
+                    
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TokenSlot, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TokenSlot, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TokenSlot, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create Token" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+}
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+<p>Token time represents the time at which you can go and pick yout deliver.</p>
